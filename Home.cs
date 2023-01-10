@@ -1,4 +1,6 @@
-﻿using RestSharp;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +19,12 @@ namespace translator
     public partial class Home : Form
     {
 
+        public string inLang { get; set; }
+        public string outLang { get; set; }
+        public string text { get; set; }
+
+
+
         public Home()
         {
             InitializeComponent();
@@ -34,11 +42,30 @@ namespace translator
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            API();
         }
 
-        private async void API()
+        private void inputLangInputTxt_TextChanged(object sender, EventArgs e)
         {
+            inLang = this.inputLangInputTxt.Text;
+        }
+
+        private void OutputLangInputTxt_TextChanged(object sender, EventArgs e)
+        {
+            outLang = this.OutputLangInputTxt.Text;
+        }
+
+        private void TextInputTxt_TextChanged(object sender, EventArgs e)
+        {
+            text = this.TextInputTxt.Text;
+        }
+
+        private async void API(string lang1, string lang2, string text)
+        {
+
+            string inputLang = lang1;
+            string outputLang = lang2;
+            string inputText = text;
+
             var client = new HttpClient();
             var request = new HttpRequestMessage
             {
@@ -51,17 +78,24 @@ namespace translator
                 },
                             Content = new FormUrlEncodedContent(new Dictionary<string, string>
                 {
-                    { "source_language", "en" },
-                    { "target_language", "id" },
-                    { "text", "chicken" },
+                    { "source_language", inputLang },
+                    { "target_language", outputLang },
+                    { "text", inputText },
                 }),
             };
 
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            var body = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(body);
+            string body = await response.Content.ReadAsStringAsync();
+            JObject obj = JObject.Parse(body);
+            translatedTxt.Text = (obj["data"]["translatedText"]).ToString();
         }
 
+        private void translateBtn_Click(object sender, EventArgs e)
+        {
+
+            API(inLang, outLang, text);
+
+        }
     }
 }
