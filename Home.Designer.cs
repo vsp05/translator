@@ -29,6 +29,7 @@ namespace translator
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.TopBox = new System.Windows.Forms.PictureBox();
             this.PageTitleTxt = new System.Windows.Forms.TextBox();
             this.inputLangTxt = new System.Windows.Forms.TextBox();
@@ -40,6 +41,8 @@ namespace translator
             this.translateBtn = new System.Windows.Forms.Button();
             this.OutputTxt = new System.Windows.Forms.TextBox();
             this.translatedTxt = new System.Windows.Forms.TextBox();
+            this.LanguagesBtn = new System.Windows.Forms.Button();
+            this.LanguagesTxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.TopBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,9 +74,9 @@ namespace translator
             this.inputLangTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inputLangTxt.Location = new System.Drawing.Point(29, 83);
             this.inputLangTxt.Name = "inputLangTxt";
-            this.inputLangTxt.Size = new System.Drawing.Size(233, 33);
+            this.inputLangTxt.Size = new System.Drawing.Size(316, 33);
             this.inputLangTxt.TabIndex = 2;
-            this.inputLangTxt.Text = "Input Language:";
+            this.inputLangTxt.Text = "Input Language Code:";
             // 
             // TextTxt
             // 
@@ -93,14 +96,14 @@ namespace translator
             this.OutputLangTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OutputLangTxt.Location = new System.Drawing.Point(29, 148);
             this.OutputLangTxt.Name = "OutputLangTxt";
-            this.OutputLangTxt.Size = new System.Drawing.Size(233, 33);
+            this.OutputLangTxt.Size = new System.Drawing.Size(316, 33);
             this.OutputLangTxt.TabIndex = 4;
-            this.OutputLangTxt.Text = "Output Language:";
+            this.OutputLangTxt.Text = "Output Language Code:";
             // 
             // inputLangInputTxt
             // 
             this.inputLangInputTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.inputLangInputTxt.Location = new System.Drawing.Point(291, 83);
+            this.inputLangInputTxt.Location = new System.Drawing.Point(366, 83);
             this.inputLangInputTxt.Name = "inputLangInputTxt";
             this.inputLangInputTxt.Size = new System.Drawing.Size(100, 38);
             this.inputLangInputTxt.TabIndex = 5;
@@ -119,7 +122,7 @@ namespace translator
             // OutputLangInputTxt
             // 
             this.OutputLangInputTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.OutputLangInputTxt.Location = new System.Drawing.Point(291, 148);
+            this.OutputLangInputTxt.Location = new System.Drawing.Point(366, 148);
             this.OutputLangInputTxt.Name = "OutputLangInputTxt";
             this.OutputLangInputTxt.Size = new System.Drawing.Size(100, 38);
             this.OutputLangInputTxt.TabIndex = 7;
@@ -157,11 +160,33 @@ namespace translator
             this.translatedTxt.Size = new System.Drawing.Size(458, 142);
             this.translatedTxt.TabIndex = 10;
             // 
+            // LanguagesBtn
+            // 
+            this.LanguagesBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LanguagesBtn.BackgroundImage")));
+            this.LanguagesBtn.Location = new System.Drawing.Point(664, 83);
+            this.LanguagesBtn.Name = "LanguagesBtn";
+            this.LanguagesBtn.Size = new System.Drawing.Size(48, 47);
+            this.LanguagesBtn.TabIndex = 11;
+            this.LanguagesBtn.UseVisualStyleBackColor = true;
+            this.LanguagesBtn.Click += new System.EventHandler(this.LanguagesBtn_Click);
+            // 
+            // LanguagesTxt
+            // 
+            this.LanguagesTxt.BackColor = System.Drawing.SystemColors.Control;
+            this.LanguagesTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LanguagesTxt.Location = new System.Drawing.Point(561, 99);
+            this.LanguagesTxt.Name = "LanguagesTxt";
+            this.LanguagesTxt.Size = new System.Drawing.Size(97, 13);
+            this.LanguagesTxt.TabIndex = 12;
+            this.LanguagesTxt.Text = "Language Codes:";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 615);
+            this.Controls.Add(this.LanguagesTxt);
+            this.Controls.Add(this.LanguagesBtn);
             this.Controls.Add(this.translatedTxt);
             this.Controls.Add(this.OutputTxt);
             this.Controls.Add(this.translateBtn);
@@ -195,6 +220,8 @@ namespace translator
         private System.Windows.Forms.Button translateBtn;
         private System.Windows.Forms.TextBox OutputTxt;
         private System.Windows.Forms.TextBox translatedTxt;
+        private System.Windows.Forms.Button LanguagesBtn;
+        private System.Windows.Forms.TextBox LanguagesTxt;
     }
 }
 

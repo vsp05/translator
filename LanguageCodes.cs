@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace translator
 {
-    public partial class Help : Form
+    public partial class LanguageCodes : Form
     {
-        public Help()
+        public LanguageCodes()
         {
             InitializeComponent();
+        }
+
+        private void TopBox_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

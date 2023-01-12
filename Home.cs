@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -95,6 +96,20 @@ namespace translator
         {
 
             API(inLang, outLang, text);
+
+        }
+
+        private void LanguagesBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Thread t = new Thread(new ThreadStart(ThreadLanguagesPage));
+            t.Start();
+        }
+
+        private void ThreadLanguagesPage()
+        {
+            //RUNs a NEW application with the desired form
+            Application.Run(new LanguageCodes());
 
         }
     }
