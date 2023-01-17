@@ -32,7 +32,7 @@ namespace translator
             System.Windows.Forms.LinkLabel ISOLink;
             this.TopBox = new System.Windows.Forms.PictureBox();
             this.LanguageCodesTitle = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.HomeBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -89,15 +89,16 @@ namespace translator
             this.LanguageCodesTitle.TabIndex = 2;
             this.LanguageCodesTitle.Text = "Language Codes";
             // 
-            // button1
+            // HomeBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.IndianRed;
-            this.button1.Location = new System.Drawing.Point(686, 497);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 39);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Back to Home";
-            this.button1.UseVisualStyleBackColor = false;
+            this.HomeBtn.BackColor = System.Drawing.Color.IndianRed;
+            this.HomeBtn.Location = new System.Drawing.Point(686, 497);
+            this.HomeBtn.Name = "HomeBtn";
+            this.HomeBtn.Size = new System.Drawing.Size(102, 39);
+            this.HomeBtn.TabIndex = 3;
+            this.HomeBtn.Text = "Back to Home";
+            this.HomeBtn.UseVisualStyleBackColor = false;
+            this.HomeBtn.Click += new System.EventHandler(this.HomeBtn_Click);
             // 
             // label1
             // 
@@ -315,7 +316,7 @@ namespace translator
             this.Controls.Add(this.label2);
             this.Controls.Add(ISOLink);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.HomeBtn);
             this.Controls.Add(this.LanguageCodesTitle);
             this.Controls.Add(this.TopBox);
             this.Name = "LanguageCodes";
@@ -330,7 +331,7 @@ namespace translator
 
         private System.Windows.Forms.PictureBox TopBox;
         private System.Windows.Forms.Label LanguageCodesTitle;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button HomeBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
