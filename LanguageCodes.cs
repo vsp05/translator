@@ -21,5 +21,10 @@ namespace translator
         {
 
         }
+
+        private void ISOLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.loc.gov/standards/iso639-2/php/code_list.php");
+        }
     }
 }

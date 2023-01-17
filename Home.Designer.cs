@@ -43,6 +43,8 @@ namespace translator
             this.translatedTxt = new System.Windows.Forms.TextBox();
             this.LanguagesBtn = new System.Windows.Forms.Button();
             this.LanguagesTxt = new System.Windows.Forms.TextBox();
+            this.HomePgTitle = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TopBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +66,6 @@ namespace translator
             this.PageTitleTxt.Name = "PageTitleTxt";
             this.PageTitleTxt.Size = new System.Drawing.Size(776, 46);
             this.PageTitleTxt.TabIndex = 1;
-            this.PageTitleTxt.Text = "Home Page";
             this.PageTitleTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // inputLangTxt
@@ -76,7 +77,7 @@ namespace translator
             this.inputLangTxt.Name = "inputLangTxt";
             this.inputLangTxt.Size = new System.Drawing.Size(316, 33);
             this.inputLangTxt.TabIndex = 2;
-            this.inputLangTxt.Text = "Input Language Code:";
+            this.inputLangTxt.Text = "Input Language Code*:";
             // 
             // TextTxt
             // 
@@ -98,7 +99,7 @@ namespace translator
             this.OutputLangTxt.Name = "OutputLangTxt";
             this.OutputLangTxt.Size = new System.Drawing.Size(316, 33);
             this.OutputLangTxt.TabIndex = 4;
-            this.OutputLangTxt.Text = "Output Language Code:";
+            this.OutputLangTxt.Text = "Output Language Code*:";
             // 
             // inputLangInputTxt
             // 
@@ -180,11 +181,32 @@ namespace translator
             this.LanguagesTxt.TabIndex = 12;
             this.LanguagesTxt.Text = "Language Codes:";
             // 
+            // HomePgTitle
+            // 
+            this.HomePgTitle.AutoSize = true;
+            this.HomePgTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HomePgTitle.Location = new System.Drawing.Point(303, 7);
+            this.HomePgTitle.Name = "HomePgTitle";
+            this.HomePgTitle.Size = new System.Drawing.Size(215, 42);
+            this.HomePgTitle.TabIndex = 13;
+            this.HomePgTitle.Text = "Home Page";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(558, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(237, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "* Language codes should be in ISO 639-1 format";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 615);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.HomePgTitle);
             this.Controls.Add(this.LanguagesTxt);
             this.Controls.Add(this.LanguagesBtn);
             this.Controls.Add(this.translatedTxt);
@@ -222,6 +244,8 @@ namespace translator
         private System.Windows.Forms.TextBox translatedTxt;
         private System.Windows.Forms.Button LanguagesBtn;
         private System.Windows.Forms.TextBox LanguagesTxt;
+        private System.Windows.Forms.Label HomePgTitle;
+        private System.Windows.Forms.Label label1;
     }
 }
 
