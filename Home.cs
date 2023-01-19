@@ -112,5 +112,19 @@ namespace translator
             Application.Run(new LanguageCodes());
 
         }
+
+        private void DocumentBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Thread t = new Thread(new ThreadStart(ThreadFileTranslator));
+            t.Start();
+        }
+
+        private void ThreadFileTranslator()
+        {
+            //RUNs a NEW application with the desired form
+            Application.Run(new FileTranslator());
+
+        }
     }
 }

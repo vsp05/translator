@@ -45,6 +45,7 @@ namespace translator
             this.LanguagesTxt = new System.Windows.Forms.TextBox();
             this.HomePgTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.DocumentBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TopBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -209,11 +210,24 @@ namespace translator
             this.label1.TabIndex = 0;
             this.label1.Text = "* Language codes should be in ISO 639-1 format";
             // 
+            // DocumentBtn
+            // 
+            this.DocumentBtn.BackColor = System.Drawing.Color.LightYellow;
+            this.DocumentBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DocumentBtn.Location = new System.Drawing.Point(51, 640);
+            this.DocumentBtn.Name = "DocumentBtn";
+            this.DocumentBtn.Size = new System.Drawing.Size(154, 53);
+            this.DocumentBtn.TabIndex = 5;
+            this.DocumentBtn.Text = "Translate a large file";
+            this.DocumentBtn.UseVisualStyleBackColor = false;
+            this.DocumentBtn.Click += new System.EventHandler(this.DocumentBtn_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 615);
+            this.ClientSize = new System.Drawing.Size(800, 719);
+            this.Controls.Add(this.DocumentBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.HomePgTitle);
             this.Controls.Add(this.LanguagesTxt);
@@ -255,6 +269,7 @@ namespace translator
         private System.Windows.Forms.TextBox LanguagesTxt;
         private System.Windows.Forms.Label HomePgTitle;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button DocumentBtn;
     }
 }
 
