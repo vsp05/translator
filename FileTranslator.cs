@@ -10,9 +10,10 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using translator.Models;
 
 namespace translator
-{
+{  
     public partial class FileTranslator : Form
     {
 
@@ -21,6 +22,7 @@ namespace translator
         public string outLang { get; set; }
         public string text { get; set; }
 
+        string selectedfile = string.Empty;
 
 
         public FileTranslator()
@@ -30,7 +32,45 @@ namespace translator
 
         private void ImportBtn_Click(object sender, EventArgs e)
         {
-            //finish this next block -- see HowTo for insipration
+            this.OpenFileDialogWindow();
+            this.ImportData();
+        }
+
+        private void OpenFileDialogWindow()
+        {
+            string dbasepath = CurrentPath.GetDbasePath();
+
+            OpenFileDialog openDialog = new OpenFileDialog();
+
+            //Set Title of OpenFileDialog
+            openDialog.Title = "Select A Text File";
+            //Set directory path
+            openDialog.InitialDirectory = dbasepath;
+
+            //Set the File Filter of OpenFileDialog
+            openDialog.Filter = "Text (*.txt)|*.txt" + "|" +
+                                "CSV (*.csv)|*.csv" + "|" +
+                                "All Files (*.*)|*.*";
+
+            //Get the OK press of the Dialog Box
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                //Get Selected File
+                selectedfile = openDialog.FileName;
+            }
+        }
+
+        private void ImportData()
+        {
+            //Get Guaridan of the Galaxy Characters from text file
+            text = TexFiletInputOutput.GetGuardiansData(selectedfile);
+
+            //Use LINQ to get customers from the CustomersModel
+            var theguardians = (from c in characters
+                                select c.Person).ToList();
+
+            //Set the DataSource of the listbox to the customers collection
+            this.lstCharacters.DataSource = theguardians;
         }
 
         private async void API(string lang1, string lang2, string text)
