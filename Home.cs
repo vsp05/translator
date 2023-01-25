@@ -117,6 +117,9 @@ namespace translator
         {
             this.Close();
             Thread t = new Thread(new ThreadStart(ThreadFileTranslator));
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+            t.Join();
             t.Start();
         }
 

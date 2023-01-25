@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using translator.Models;
+using translator.Processes;
 
 namespace translator
 {  
@@ -20,10 +21,9 @@ namespace translator
 
         public string inLang { get; set; }
         public string outLang { get; set; }
-        public string text { get; set; }
+        public List<string> text { get; set; }
 
         string selectedfile = string.Empty;
-
 
         public FileTranslator()
         {
@@ -63,14 +63,14 @@ namespace translator
         private void ImportData()
         {
             //Get Guaridan of the Galaxy Characters from text file
-            text = TexFiletInputOutput.GetGuardiansData(selectedfile);
+            text = TextFileInputOutput.GetData(selectedfile);
 
             //Use LINQ to get customers from the CustomersModel
-            var theguardians = (from c in characters
-                                select c.Person).ToList();
+            //var theguardians = (from c in text
+            //                    select c.Person).ToList();
 
             //Set the DataSource of the listbox to the customers collection
-            this.lstCharacters.DataSource = theguardians;
+            //this.lstCharacters.DataSource = theguardians;
         }
 
         private async void API(string lang1, string lang2, string text)

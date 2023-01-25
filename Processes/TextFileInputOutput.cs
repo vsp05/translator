@@ -58,7 +58,7 @@ namespace translator.Processes
                 {
                     foreach (var d in data)
                     {
-                        writer.WriteLine(d.TempLine.ToString());
+                        writer.WriteLine(d.ToString());
                     }
                 }
             }
