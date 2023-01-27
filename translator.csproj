@@ -98,7 +98,10 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\TitlesModel.cs" />
     <Compile Include="Models\CurrentPath.cs" />
+    <Compile Include="Processes\ConvertObjects.cs" />
+    <Compile Include="Processes\ExportXML.cs" />
     <Compile Include="Processes\TextFileInputOutput.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

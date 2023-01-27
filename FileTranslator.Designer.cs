@@ -32,7 +32,6 @@ namespace translator
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileTranslator));
             this.HomeBtn = new System.Windows.Forms.Button();
             this.ImportBtn = new System.Windows.Forms.Button();
-            this.translatedTxt = new System.Windows.Forms.TextBox();
             this.inputLangTxt = new System.Windows.Forms.TextBox();
             this.OutputLangTxt = new System.Windows.Forms.TextBox();
             this.inputLangInputTxt = new System.Windows.Forms.TextBox();
@@ -40,6 +39,14 @@ namespace translator
             this.LanguagesTxt = new System.Windows.Forms.TextBox();
             this.LanguagesBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.OutputDirectoryBtn = new System.Windows.Forms.Button();
+            this.txtLocation = new System.Windows.Forms.TextBox();
+            this.exportBtn = new System.Windows.Forms.Button();
+            this.FilenameLbl = new System.Windows.Forms.Label();
+            this.txtFileName = new System.Windows.Forms.TextBox();
+            this.ExportFileTypeLbl = new System.Windows.Forms.Label();
+            this.rbText = new System.Windows.Forms.RadioButton();
+            this.rbXML = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // HomeBtn
@@ -62,14 +69,6 @@ namespace translator
             this.ImportBtn.Text = "Import Text File";
             this.ImportBtn.UseVisualStyleBackColor = false;
             this.ImportBtn.Click += new System.EventHandler(this.ImportBtn_Click);
-            // 
-            // translatedTxt
-            // 
-            this.translatedTxt.Location = new System.Drawing.Point(24, 250);
-            this.translatedTxt.Multiline = true;
-            this.translatedTxt.Name = "translatedTxt";
-            this.translatedTxt.Size = new System.Drawing.Size(571, 225);
-            this.translatedTxt.TabIndex = 2;
             // 
             // inputLangTxt
             // 
@@ -144,11 +143,99 @@ namespace translator
             this.label1.TabIndex = 9;
             this.label1.Text = "* Language codes should be in ISO 639-1 format";
             // 
+            // OutputDirectoryBtn
+            // 
+            this.OutputDirectoryBtn.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.OutputDirectoryBtn.Location = new System.Drawing.Point(33, 238);
+            this.OutputDirectoryBtn.Name = "OutputDirectoryBtn";
+            this.OutputDirectoryBtn.Size = new System.Drawing.Size(151, 55);
+            this.OutputDirectoryBtn.TabIndex = 10;
+            this.OutputDirectoryBtn.Text = "Output Directory";
+            this.OutputDirectoryBtn.UseVisualStyleBackColor = false;
+            this.OutputDirectoryBtn.Click += new System.EventHandler(this.OutputDirectoryBtn_Click);
+            // 
+            // txtLocation
+            // 
+            this.txtLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLocation.Location = new System.Drawing.Point(225, 247);
+            this.txtLocation.Name = "txtLocation";
+            this.txtLocation.Size = new System.Drawing.Size(235, 31);
+            this.txtLocation.TabIndex = 11;
+            // 
+            // exportBtn
+            // 
+            this.exportBtn.BackColor = System.Drawing.Color.Yellow;
+            this.exportBtn.Location = new System.Drawing.Point(33, 482);
+            this.exportBtn.Name = "exportBtn";
+            this.exportBtn.Size = new System.Drawing.Size(105, 36);
+            this.exportBtn.TabIndex = 12;
+            this.exportBtn.Text = "Export";
+            this.exportBtn.UseVisualStyleBackColor = false;
+            this.exportBtn.Click += new System.EventHandler(this.exportBtn_Click);
+            // 
+            // FilenameLbl
+            // 
+            this.FilenameLbl.AutoSize = true;
+            this.FilenameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilenameLbl.Location = new System.Drawing.Point(38, 319);
+            this.FilenameLbl.Name = "FilenameLbl";
+            this.FilenameLbl.Size = new System.Drawing.Size(127, 20);
+            this.FilenameLbl.TabIndex = 13;
+            this.FilenameLbl.Text = "Export file name:";
+            // 
+            // txtFileName
+            // 
+            this.txtFileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFileName.Location = new System.Drawing.Point(225, 308);
+            this.txtFileName.Name = "txtFileName";
+            this.txtFileName.Size = new System.Drawing.Size(235, 31);
+            this.txtFileName.TabIndex = 14;
+            // 
+            // ExportFileTypeLbl
+            // 
+            this.ExportFileTypeLbl.AutoSize = true;
+            this.ExportFileTypeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportFileTypeLbl.Location = new System.Drawing.Point(47, 383);
+            this.ExportFileTypeLbl.Name = "ExportFileTypeLbl";
+            this.ExportFileTypeLbl.Size = new System.Drawing.Size(117, 20);
+            this.ExportFileTypeLbl.TabIndex = 15;
+            this.ExportFileTypeLbl.Text = "Export file type:";
+            // 
+            // rbText
+            // 
+            this.rbText.AutoSize = true;
+            this.rbText.Location = new System.Drawing.Point(225, 383);
+            this.rbText.Name = "rbText";
+            this.rbText.Size = new System.Drawing.Size(46, 17);
+            this.rbText.TabIndex = 16;
+            this.rbText.TabStop = true;
+            this.rbText.Text = "Text";
+            this.rbText.UseVisualStyleBackColor = true;
+            // 
+            // rbXML
+            // 
+            this.rbXML.AutoSize = true;
+            this.rbXML.Location = new System.Drawing.Point(303, 383);
+            this.rbXML.Name = "rbXML";
+            this.rbXML.Size = new System.Drawing.Size(47, 17);
+            this.rbXML.TabIndex = 18;
+            this.rbXML.TabStop = true;
+            this.rbXML.Text = "XML";
+            this.rbXML.UseVisualStyleBackColor = true;
+            // 
             // FileTranslator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 570);
+            this.Controls.Add(this.rbXML);
+            this.Controls.Add(this.rbText);
+            this.Controls.Add(this.ExportFileTypeLbl);
+            this.Controls.Add(this.txtFileName);
+            this.Controls.Add(this.FilenameLbl);
+            this.Controls.Add(this.exportBtn);
+            this.Controls.Add(this.txtLocation);
+            this.Controls.Add(this.OutputDirectoryBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LanguagesBtn);
             this.Controls.Add(this.LanguagesTxt);
@@ -156,11 +243,11 @@ namespace translator
             this.Controls.Add(this.inputLangInputTxt);
             this.Controls.Add(this.OutputLangTxt);
             this.Controls.Add(this.inputLangTxt);
-            this.Controls.Add(this.translatedTxt);
             this.Controls.Add(this.ImportBtn);
             this.Controls.Add(this.HomeBtn);
             this.Name = "FileTranslator";
             this.Text = "File Translator";
+            this.Load += new System.EventHandler(this.FileTranslator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,7 +257,6 @@ namespace translator
 
         private System.Windows.Forms.Button HomeBtn;
         private System.Windows.Forms.Button ImportBtn;
-        private System.Windows.Forms.TextBox translatedTxt;
         private System.Windows.Forms.TextBox inputLangTxt;
         private System.Windows.Forms.TextBox OutputLangTxt;
         private System.Windows.Forms.TextBox inputLangInputTxt;
@@ -178,5 +264,14 @@ namespace translator
         private System.Windows.Forms.TextBox LanguagesTxt;
         private System.Windows.Forms.Button LanguagesBtn;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button OutputDirectoryBtn;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.TextBox txtLocation;
+        private System.Windows.Forms.Button exportBtn;
+        private System.Windows.Forms.Label FilenameLbl;
+        private System.Windows.Forms.TextBox txtFileName;
+        private System.Windows.Forms.Label ExportFileTypeLbl;
+        private System.Windows.Forms.RadioButton rbText;
+        private System.Windows.Forms.RadioButton rbXML;
     }
 }
