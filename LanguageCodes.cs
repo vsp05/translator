@@ -18,10 +18,6 @@ namespace translator
             InitializeComponent();
         }
 
-        private void TopBox_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void ISOLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -39,6 +35,11 @@ namespace translator
         {
             //RUNs a NEW application with the desired form
             Application.Run(new Home());
+
+        }
+
+        private void LanguageCodes_Load(object sender, EventArgs e)
+        {
 
         }
     }

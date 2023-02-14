@@ -117,7 +117,16 @@ namespace translator
 
         private void FileTranslator_Load(object sender, EventArgs e)
         {
+            this.CenterToScreen();
+            this.SetControls();
+        }
 
+        private void SetControls()
+        {
+            //Form
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
         }
 
         private void OutputDirectoryBtn_Click(object sender, EventArgs e)

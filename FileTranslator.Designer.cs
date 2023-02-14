@@ -47,6 +47,7 @@ namespace translator
             this.ExportFileTypeLbl = new System.Windows.Forms.Label();
             this.rbText = new System.Windows.Forms.RadioButton();
             this.rbXML = new System.Windows.Forms.RadioButton();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // HomeBtn
@@ -265,7 +266,6 @@ namespace translator
         private System.Windows.Forms.Button LanguagesBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button OutputDirectoryBtn;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.Button exportBtn;
         private System.Windows.Forms.Label FilenameLbl;
@@ -273,5 +273,6 @@ namespace translator
         private System.Windows.Forms.Label ExportFileTypeLbl;
         private System.Windows.Forms.RadioButton rbText;
         private System.Windows.Forms.RadioButton rbXML;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

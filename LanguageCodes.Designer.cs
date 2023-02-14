@@ -77,7 +77,6 @@ namespace translator
             this.TopBox.Size = new System.Drawing.Size(815, 65);
             this.TopBox.TabIndex = 1;
             this.TopBox.TabStop = false;
-            this.TopBox.Click += new System.EventHandler(this.TopBox_Click);
             // 
             // LanguageCodesTitle
             // 
@@ -321,6 +320,7 @@ namespace translator
             this.Controls.Add(this.TopBox);
             this.Name = "LanguageCodes";
             this.Text = "Language Codes";
+            this.Load += new System.EventHandler(this.LanguageCodes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TopBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
