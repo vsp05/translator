@@ -3,19 +3,23 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+using translator;
 
 namespace translator.Processes
 {
-    public static class TextFileInputOutput
+    public class TextFileInputOutput
     {
         private static List<String> lines;
 
         public static string TempLine { get; set;}
 
-        public static List<String> GetData(string file)
+        public static List<String> GetData(string file, string inlang, string outlang)
         {
             lines = new List<String>();
-            string line = string.Empty;
+            string line = ""; 
 
             try
             {
@@ -28,9 +32,9 @@ namespace translator.Processes
                         //Read the data in the file
                         while ((line = rdr.ReadLine()) != null)
                         {
-                            //Add data to the Customers Model
-                            lines.Add(line);
-                            TempLine = line;
+                            //FIGURE OUT HOW TO CALL API
+                           //lines.Add(translatedLine);
+                            //TempLine = translatedLine;
                         }
                     }
                 }
@@ -70,5 +74,7 @@ namespace translator.Processes
 
             return true;
         }
+
+        
     }
 }

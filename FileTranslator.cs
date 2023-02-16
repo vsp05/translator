@@ -63,7 +63,7 @@ namespace translator
         private void ImportData()
         {
             //Get Guaridan of the Galaxy Characters from text file
-            text = TextFileInputOutput.GetData(selectedfile);
+            text = TextFileInputOutput.GetData(selectedfile, inLang, outLang);
 
             //Use LINQ to get customers from the CustomersModel
             //var theguardians = (from c in text

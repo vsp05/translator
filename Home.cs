@@ -60,7 +60,7 @@ namespace translator
             text = this.TextInputTxt.Text;
         }
 
-        private async void API(string lang1, string lang2, string text)
+        public async void API(string lang1, string lang2, string text)
         {
 
             string inputLang = lang1;
