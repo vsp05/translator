@@ -33,8 +33,8 @@ namespace translator.Processes
                         while ((line = rdr.ReadLine()) != null)
                         {
                             //FIGURE OUT HOW TO CALL API
-                           //lines.Add(translatedLine);
-                            //TempLine = translatedLine;
+                            lines.Add(line);
+                            TempLine = line;
                         }
                     }
                 }
