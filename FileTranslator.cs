@@ -63,7 +63,7 @@ namespace translator
         private void ImportData()
         {
             //Get Guaridan of the Galaxy Characters from text file
-            text = TextFileInputOutput.GetData(selectedfile, inLang, outLang);
+            text = TextFileInputOutput.GetData(selectedfile);
 
             //Use LINQ to get customers from the CustomersModel
             //var theguardians = (from c in text
@@ -140,7 +140,7 @@ namespace translator
             if (this.rbText.Checked)
             {
                 file = file + ".txt";
-                success = TextFileInputOutput.ExportDataToTextFile(text, file);
+                success = TextFileInputOutput.ExportDataToTextFile(text, file, inLang, outLang);
             }
             else if (this.rbXML.Checked)
             {
