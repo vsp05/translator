@@ -13,11 +13,11 @@ namespace translator.Processes
     public class TextFileInputOutput
     {
         private static List<String> lines;
-        private static string newline;
+        // private static string newline;
 
         public static string TempLine { get; set;}
 
-        public async static void API(string lang1, string lang2, string text)
+        public async static Task<string> API(string lang1, string lang2, string text)
         {
 
             string inputLang = lang1;
@@ -47,8 +47,9 @@ namespace translator.Processes
             string body = await response.Content.ReadAsStringAsync();
             JObject obj = JObject.Parse(body);
             //newline = ((obj["data"]["translatedText"]).ToString());
-            newline = (string)obj["data"]["translatedText"];
-
+            // newline = obj["data"]["translatedText"].ToString();
+            // Console.WriteLine(newline);
+            return obj["data"]["translatedText"].ToString();
         }
 
         public static List<String> GetData(string file)
@@ -91,16 +92,33 @@ namespace translator.Processes
             try
             {
                 //We want to 
-                FileStream stream = new FileStream(file, FileMode.OpenOrCreate, FileAccess.Write);
+                FileStream stream = File.OpenWrite(file);                
 
+                foreach(var d in data)
+                {
+                    API(inlang, outlang, d).ContinueWith((newline) =>
+                    {
+                        byte[] bytes = Encoding.UTF8.GetBytes(newline.ToString());
+                        stream.Write(bytes, 0, bytes.Length);
+                    });
+                }
+                //new FileStream(file, FileMode.OpenOrCreate, FileAccess.Write);
+                //StreamWriter sr = new StreamWriter(stream);
+                //sr.WriteLine("coin");
+                //sr.WriteLine("dog");
+                /*
                 using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8))
                 {
                     foreach (var d in data)
                     {
-                        API(d, inlang, outlang);
-                        writer.WriteLine(newline);
+                        API(inlang, outlang, d).ContinueWith((newline) =>
+                        {
+                            writer.WriteLine(newline);
+                        });
                     }
-                }
+                }*/
+
+                stream.Close();
             }
             catch (Exception ex)
             {
