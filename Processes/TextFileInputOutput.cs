@@ -49,7 +49,9 @@ namespace translator.Processes
             //newline = ((obj["data"]["translatedText"]).ToString());
             // newline = obj["data"]["translatedText"].ToString();
             // Console.WriteLine(newline);
+            Console.WriteLine(obj["data"]["translatedText"]);
             return obj["data"]["translatedText"].ToString();
+
         }
 
         public static List<String> GetData(string file)
@@ -92,33 +94,99 @@ namespace translator.Processes
             try
             {
                 //We want to 
-                FileStream stream = File.OpenWrite(file);                
+                //FileStream stream = File.OpenWrite(file);
 
-                foreach(var d in data)
+                /*foreach(var d in data)
                 {
                     API(inlang, outlang, d).ContinueWith((newline) =>
                     {
                         byte[] bytes = Encoding.UTF8.GetBytes(newline.ToString());
                         stream.Write(bytes, 0, bytes.Length);
                     });
-                }
+                }*/
+
+
+
                 //new FileStream(file, FileMode.OpenOrCreate, FileAccess.Write);
                 //StreamWriter sr = new StreamWriter(stream);
                 //sr.WriteLine("coin");
                 //sr.WriteLine("dog");
-                /*
-                using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8))
+
+                /*using (StreamWriter writer = new StreamWriter(stream, Encoding.UTF8))
                 {
                     foreach (var d in data)
                     {
                         API(inlang, outlang, d).ContinueWith((newline) =>
                         {
+                            //writer.Flush();
                             writer.WriteLine(newline);
                         });
                     }
                 }*/
+                /*
+                using (StreamWriter writer = File.AppendText(file))
+                {
+                    // writer.WriteLine("hello");
+                    foreach (var d in data)
+                    {
+                        string res = "";
+                        API(inlang, outlang, d).ContinueWith((newline) =>
+                        {
+                            Console.WriteLine(newline.Result.ToString());
+                            //writer.Flush();
+                            res = newline.Result.ToString();
+                            writer.WriteLine($"{res + "---"}");
+                        });
+                        JToken res = null;
+                        API(inlang, outlang, d).ContinueWith((newline) =>
+                        {
+                            //writer.Flush();
+                            res = newline.Result;
+                        });
+                        Console.WriteLine(res);
+                        Console.WriteLine(res);
+                        writer.WriteLine($"{res+"---"}");
+                    }
+                }*/
+                List<string> lines = new List<string>();
+                foreach (var d in data)
+                {
+                    string res = "";
+                    API(inlang, outlang, d).ContinueWith((newline) =>
+                    {
+                        res = newline.Result.ToString();
+                        lines.Add(res);
+                    });
 
-                stream.Close();
+                    if (lines.Count > 0)
+                    {
+                        Console.WriteLine(lines.ToString());
+                        using (StreamWriter writer = File.AppendText(file))
+                        {
+                            foreach (string l in lines)
+                            {
+                                Console.WriteLine(l);
+                                writer.WriteLine(l);
+                            }
+                        }
+                    }
+
+
+                }
+
+                /*
+                Console.WriteLine(lines.ToString());
+                using (StreamWriter writer = File.AppendText(file))
+                {
+                    foreach(string l in lines)
+                    {
+                        Console.WriteLine(l);
+                        writer.WriteLine(l);
+                    }
+                }
+                */
+
+                //stream.Close();
             }
             catch (Exception ex)
             {
