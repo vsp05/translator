@@ -140,7 +140,9 @@ namespace translator
             if (this.rbText.Checked)
             {
                 file = file + ".txt";
-                success = TextFileInputOutput.ExportDataToTextFile(text, file, inLang, outLang);
+                //var task = TextFileInputOutput.ExportDataToTextFileAsync(text, file, inLang, outLang);
+                TextFileInputOutputTest.ExportDataToTextFileAsync(text, file, inLang, outLang);
+                string s = string.Empty;
             }
             else if (this.rbXML.Checked)
             {

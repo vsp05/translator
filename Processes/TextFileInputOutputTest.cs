@@ -11,9 +11,9 @@ using System.Linq;
 
 namespace translator.Processes
 {
-    public class TextFileInputOutput
+    public class TextFileInputOutputTest
     {
-        private static List<String> lines;
+        private static List<String> lines = new List<string>();
         static string sFile = string.Empty;
         static bool bCalled = false;
         // private static string newline;
@@ -22,6 +22,41 @@ namespace translator.Processes
 
         //public async static Task<string> API(string lang1, string lang2, string text)
         //public async static Task API(string lang1, string lang2, string text)
+        public static List<String> GetData(string file)
+        {
+            lines = new List<String>();
+            string line = "";
+
+            try
+            {
+                //Check if the file exists
+                if (File.Exists(file))
+                {
+                    //Create a Stream Reader
+                    using (StreamReader rdr = new StreamReader(file))
+                    {
+                        //Read the data in the file
+                        while ((line = rdr.ReadLine()) != null)
+                        {
+                            //FIGURE OUT HOW TO CALL API
+                            lines.Add(line);
+                            TempLine = line;
+                        }
+                    }
+                }
+                else
+                {
+                    throw new Exception("File Not Found!");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return lines;
+        }
+
         public async static Task API(string lang1, string lang2, string text)
         {
             string inputLang = lang1;
@@ -61,41 +96,6 @@ namespace translator.Processes
 
         }
 
-        public static List<String> GetData(string file)
-        {
-            lines = new List<String>();
-            string line = ""; 
-
-            try
-            {
-                //Check if the file exists
-                if (File.Exists(file))
-                {
-                    //Create a Stream Reader
-                    using (StreamReader rdr = new StreamReader(file))
-                    {
-                        //Read the data in the file
-                        while ((line = rdr.ReadLine()) != null)
-                        {
-                            //FIGURE OUT HOW TO CALL API
-                            lines.Add(line);
-                            TempLine = line;
-                        }
-                    }
-                }
-                else
-                {
-                    throw new Exception("File Not Found!");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            return lines;
-        }
-
         public static async void ExportDataToTextFileAsync(List<String> data, string file, string inlang, string outlang)
         {
             try
@@ -110,6 +110,7 @@ namespace translator.Processes
                     {
                         _ = API(inlang, outlang, d);
                     }
+                    PerformExport();
                 });
 
             }
@@ -122,7 +123,6 @@ namespace translator.Processes
             {
                 await Task.Run(() =>
                 {
-                    PerformExport();
                 });
             }
 
@@ -131,7 +131,7 @@ namespace translator.Processes
 
         private static void PerformExport()
         {
-            if (lines.Count > 0)
+            if (lines != null && lines.Count > 0)
             {
                 var result = (from l in lines
                               select l).Distinct();
