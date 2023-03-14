@@ -25,6 +25,9 @@ namespace translator
 
         string selectedfile = string.Empty;
 
+        bool success = false;
+
+
         public FileTranslator()
         {
             InitializeComponent();
@@ -113,6 +116,8 @@ namespace translator
                 return;
 
             this.PerformExport();
+
+            success = true;
         }
 
         private bool ValidateForm()
@@ -133,15 +138,14 @@ namespace translator
 
         private void PerformExport()
         {
-            bool success = false;
 
             string file = this.txtLocation.Text.Trim() + "\\" + this.txtFileName.Text.Trim();
 
             if (this.rbText.Checked)
             {
                 file = file + ".txt";
-                //var task = TextFileInputOutput.ExportDataToTextFileAsync(text, file, inLang, outLang);
-                TextFileInputOutputTest.ExportDataToTextFileAsync(text, file, inLang, outLang);
+                //var task = TextFileInputOutputTest.ExportDataToTextFileAsync(text, file, inLang, outLang);
+                TextFileInputOutput.ExportDataToTextFileAsync(text, file, inLang, outLang);
                 string s = string.Empty;
             }
             else if (this.rbXML.Checked)
