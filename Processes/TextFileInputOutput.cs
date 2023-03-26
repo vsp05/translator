@@ -34,7 +34,6 @@ namespace translator.Processes
                         //Read the data in the file
                         while ((line = rdr.ReadLine()) != null)
                         {
-                            //FIGURE OUT HOW TO CALL API
                             ilines.Add(line);
                             TempLine = line;
                         }
@@ -78,11 +77,8 @@ namespace translator.Processes
             };
 
             var response = await client.SendAsync(request);
-            //response.EnsureSuccessStatusCode();
             string body = await response.Content.ReadAsStringAsync();
             JObject obj = JObject.Parse(body);
-            //Console.WriteLine(obj["data"]["translatedText"]);
-
             return obj["data"]["translatedText"].ToString();
         }
 

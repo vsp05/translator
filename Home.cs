@@ -120,7 +120,7 @@ namespace translator
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
             t.Join();
-            t.Start();
+            //t.Start();
         }
 
         private void ThreadFileTranslator()

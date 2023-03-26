@@ -134,6 +134,7 @@ namespace translator
             this.LanguagesBtn.TabIndex = 8;
             this.LanguagesBtn.TabStop = false;
             this.LanguagesBtn.UseVisualStyleBackColor = true;
+            this.LanguagesBtn.Click += new System.EventHandler(this.LanguagesBtn_Click);
             // 
             // label1
             // 
@@ -228,7 +229,7 @@ namespace translator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 570);
+            this.ClientSize = new System.Drawing.Size(812, 585);
             this.Controls.Add(this.rbXML);
             this.Controls.Add(this.rbText);
             this.Controls.Add(this.ExportFileTypeLbl);

@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using translator.Models;
@@ -157,9 +158,22 @@ namespace translator
                 MessageBox.Show(this, "Export of " + file + " was SUCCESSFUL.", TitlesModel.MessageBoxTitle,
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                MessageBox.Show(this, "Export of " + file + " was UNSUCCESSFUL!", TitlesModel.MessageBoxTitle,
+                MessageBox.Show(this, "Export of " + file + " was SUCCESSFUL!", TitlesModel.MessageBoxTitle,
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void LanguagesBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Thread t = new Thread(new ThreadStart(ThreadLanguagesPage));
+            t.Start();
+        }
+
+        private void ThreadLanguagesPage()
+        {
+            //RUNs a NEW application with the desired form
+            Application.Run(new LanguageCodes());
+
+        }
     }
 }
